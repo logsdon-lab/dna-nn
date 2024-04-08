@@ -67,6 +67,11 @@ a model with
 ```
 The stderr output gives the accuracy for each label.
 
+### Docker
+To build and push image.
+```sh
+make docker
+```
 
 ## Citing dna-nn
 

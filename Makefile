@@ -9,7 +9,7 @@ ifneq ($(asan),)
 	LIBS+=-fsanitize=address
 endif
 
-.PHONY:all clean depend
+.PHONY:all clean depend docker
 .SUFFIXES:.c .o
 
 .c.o:
@@ -31,6 +31,10 @@ clean:
 
 depend:
 		(LC_ALL=C; export LC_ALL; makedepend -Y -- $(CFLAGS) $(CPPFLAGS) -- *.c)
+
+docker:
+		sudo docker build . -f docker/Dockerfile -t logsdonlab/dna-nn:latest
+		docker image push logsdonlab/dna-nn:latest
 
 # DO NOT DELETE
 
